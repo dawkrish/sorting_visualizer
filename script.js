@@ -57,7 +57,7 @@ function sort(){
     let count1 = 0;
     let count2 = 0;
     let width = (window.innerWidth - num - 50) / num;
-    const id = setInterval(frame, 1000);
+    const id = setInterval(frame, 10);
     function frame() {
         if(count1 == num){
             clearInterval(id);
@@ -80,12 +80,14 @@ function sort(){
             arr[i].draw()
         }
 
-        // drawBars()
+        //clear the rectangle where parser will come
         ctx.clearRect(10 + (count2)*(width) , 300, width, -240,);
+        // restoring the previous
         old_bar =  new Bar(10 + (count2)*width , 300, width, arr[count2].height, "#0081B4");
-        parser1 = new Bar(10 + (count2+1)*width , 300, width, -240, "red");
+        parser = new Bar(10 + (count2+1)*width , 300, width, -240, "red");
+        
         old_bar.draw()
-        parser1.draw()
+        parser.draw()
 
         let e1 = Math.abs(arr[count2].height);
         let e2 = Math.abs(arr[count2+1].height);
@@ -99,46 +101,3 @@ function sort(){
         }
     }
 }
-
-
-
-function isSorted(arr){
-    for(let i = 0; i < arr.length - 1; i++){
-        for(let j = 0; j < arr.length - i - 1; j++){
-            e1 = arr[j].height;
-            e2 = arr[j+1].height;
-            if(e1 > e2){
-                return false
-            }
-        }
-    }
-    return true
-}
-
-
-
-// function sort(){
-//     let count1 = 0;
-//     let count2 = 0;
-//     let width = (window.innerWidth - num - 50) / num;
-//     const id = setInterval(frame, 100);
-//     function frame() {
-//         if(count1 == num){
-//             clearInterval(id);
-//         }
-//         if (count2 == num-1) {
-//             count2 = 0;
-//         } else {
-//         count2++; 
-        
-//         // will draw all the bars
-//         // then clear previous bar
-//         drawBars()
-//         ctx.clearRect(10 + (count2-1)*(width) , 300, width, -240,);
-//         old_bar =  new Bar(10 + (count2-1)*width , 300, width, -240, "#0081B4");
-//         parser = new Bar(10 + count2*width , 300, width, -240, "red");
-//         old_bar.draw()
-//         parser.draw()
-//         }
-//     }
-// }
