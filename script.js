@@ -57,7 +57,7 @@ function sort(){
     let count1 = 0;
     let count2 = 0;
     let width = (window.innerWidth - num - 50) / num;
-    const id = setInterval(frame, 10);
+    const id = setInterval(frame, 1000);
     function frame() {
         if(count1 == num){
             clearInterval(id);
@@ -82,7 +82,7 @@ function sort(){
 
         // drawBars()
         ctx.clearRect(10 + (count2)*(width) , 300, width, -240,);
-        old_bar =  new Bar(10 + (count2)*width , arr[count2].height, width, -240, "#0081B4");
+        old_bar =  new Bar(10 + (count2)*width , 300, width, arr[count2].height, "#0081B4");
         parser1 = new Bar(10 + (count2+1)*width , 300, width, -240, "red");
         old_bar.draw()
         parser1.draw()
